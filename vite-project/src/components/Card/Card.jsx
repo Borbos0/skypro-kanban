@@ -1,15 +1,11 @@
-export default function NeedToDo() {
+export default function Card({tag, description, date}) {
     return (
-        <div class="main__column">
-						<div class="column__title">
-							<p>Нужно сделать</p>
-						</div>
 						<div class="cards">
 							<div class="cards__item">
 								<div class="cards__card card">
 									<div class="card__group">
 										<div class="card__theme _green">
-											<p class="_green">Research</p>
+											<p class="_green">{tag}</p>
 										</div>
 										<a href="#popBrowse" target="_self">
 											<div class="card__btn">
@@ -21,7 +17,7 @@ export default function NeedToDo() {
 									</div>
 									<div class="card__content">
 										<a href="" target="_blank">
-											<h3 class="card__title">Название задачи</h3>
+											<h3 class="card__title">{description}</h3>
 										</a>
 										<div class="card__date">
 											<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -35,12 +31,11 @@ export default function NeedToDo() {
 													</clipPath>
 												</defs>
 											</svg>
-											<p>30.10.23</p>
+											<p>{date}</p>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
     )
 }
