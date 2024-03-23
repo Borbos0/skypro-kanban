@@ -1,0 +1,73 @@
+export const card = [{
+    id: 0,
+    statusName: "Тестирование",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 1,
+    statusName: "Готово",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 2,
+    statusName: "Нужно сделать",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 3,
+    statusName: "В работе",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 4,
+    statusName: "В работе",
+    tag: "Copywriting",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 5,
+    statusName: "В работе",
+    tag: "Web Design",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 6,
+    statusName: "В работе",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 7,
+    statusName: "Без статуса",
+    tag: "Web Design",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 8,
+    statusName: "Без статуса",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 9,
+    statusName: "Без статуса",
+    tag: "Web Design",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 10,
+    statusName: "Без статуса",
+    tag: "Copywriting",
+    description: "Название задачи",
+    date: "30.10.23",
+  }, {
+    id: 11,
+    statusName: "Без статуса",
+    tag: "Research",
+    description: "Название задачи",
+    date: "30.10.23",
+  }];
