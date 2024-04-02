@@ -265,8 +265,8 @@ body {
   left: 12px;
 }
 .pop-user-set button {
-  width: 72px;
-  height: 30px;
+  /* width: 72px;
+  height: 30px; */
   background: transparent;
   color: #565EEF;
   border-radius: 4px;
@@ -740,7 +740,7 @@ body {
   justify-content: center;
 }
 .header__btn-main-new {
-  width: 178px;
+  /* width: 178px; */
   height: 30px;
   border-radius: 4px;
   background-color: #565EEF;
@@ -777,7 +777,7 @@ body {
   padding: 0;
 }
 .header__pop-user-set {
-  display: none;
+  display: block;
   position: absolute;
   top: 61px;
   right: 0;
