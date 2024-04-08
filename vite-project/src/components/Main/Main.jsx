@@ -1,12 +1,13 @@
 import Column from "../Columns/MainColumn.jsx";
 import { statusList } from "../Data/Data.js";
+import * as m from "./Main.styled";
 
 export default function Main({ cardList, isLoading }) {
   return (
-    <main class="main">
+    <m.Main>
       <div class="container">
-        <div class="main__block">
-          <div class="main__content">
+        <m.MainBlock>
+          <m.MainContent>
             {isLoading ? (
               "Данные загружаются"
             ) : (
@@ -22,9 +23,9 @@ export default function Main({ cardList, isLoading }) {
                 ))}
               </>
             )}
-          </div>
-        </div>
+          </m.MainContent>
+        </m.MainBlock>
       </div>
-    </main>
+    </m.Main>
   );
 }

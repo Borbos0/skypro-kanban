@@ -1,4 +1,6 @@
 import { useState } from "react";
+import * as h from "./Header.styled";
+// import { popExit } from "../Popups/PopExit";
 
 function Header({ cardList, setCard }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +20,9 @@ function Header({ cardList, setCard }) {
 
   return (
     <div>
-      <header class="header">
+      <h.Header>
         <div class="container">
-          <div class="header__block">
+          <h.HeaderBlock>
             <div class="header__logo _show _light">
               <a href="" target="_self">
                 <img src="public/logo.png" alt="logo" />
@@ -31,15 +33,11 @@ function Header({ cardList, setCard }) {
                 <img src="public/logo_dark.png" alt="logo" />
               </a>
             </div>
-            <nav class="header__nav">
+            <h.HeaderNav>
               {/* #popNewCard */}
-              <button
-                onClick={OnClick}
-                class="header__btn-main-new _hover01"
-                id="btnMainNew"
-              >
+              <h.HeaderButton onClick={OnClick} id="btnMainNew">
                 Создать новую задачу
-              </button>
+              </h.HeaderButton>
               <a
                 href="#user-set-target"
                 class="header__user _hover02"
@@ -64,10 +62,12 @@ function Header({ cardList, setCard }) {
                   </button>
                 </div>
               )}
-            </nav>
-          </div>
+            </h.HeaderNav>
+          </h.HeaderBlock>
         </div>
-      </header>
+      </h.Header>
+
+      {/* <popExit onClick={showProfile} /> */}
       <div class="pop-exit" id="popExit">
         <div class="pop-exit__container">
           <div class="pop-exit__block">

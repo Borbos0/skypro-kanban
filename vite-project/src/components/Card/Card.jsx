@@ -1,25 +1,36 @@
+import * as C from "./Card.styled";
+
 export default function Card({ tag, description, date }) {
+  const getClassTag = (tag) => {
+    const tagMassive = [
+      { color: "_green", name: "Research" },
+      { color: "_orange", name: "Web Design" },
+      { color: "_purple", name: "Copywriting" },
+    ];
+    const result = tagMassive.filter((word) => word.name === tag);
+    return result.map((word) => word.color);
+  };
   return (
-    <div class="cards">
-      <div class="cards__item">
-        <div class="cards__card card">
-          <div class="card__group">
-            <div class="card__theme _green">
-              <p class="_green">{tag}</p>
-            </div>
+    <C.Cards>
+      <C.CardsItem>
+        <C.CardsCard>
+          <C.CardGroup>
+            <C.CardTheme $theme={getClassTag(tag)}>
+              <p>{tag}</p>
+            </C.CardTheme>
             <a href="#popBrowse" target="_self">
-              <div class="card__btn">
+              <C.CardBtn>
                 <div></div>
                 <div></div>
                 <div></div>
-              </div>
+              </C.CardBtn>
             </a>
-          </div>
-          <div class="card__content">
+          </C.CardGroup>
+          <C.CardContent>
             <a href="" target="_blank">
-              <h3 class="card__title">{description}</h3>
+              <C.CardTitle>{description}</C.CardTitle>
             </a>
-            <div class="card__date">
+            <C.CardDate>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="13"
@@ -49,10 +60,10 @@ export default function Card({ tag, description, date }) {
                 </defs>
               </svg>
               <p>{date}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </C.CardDate>
+          </C.CardContent>
+        </C.CardsCard>
+      </C.CardsItem>
+    </C.Cards>
   );
 }

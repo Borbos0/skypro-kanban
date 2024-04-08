@@ -1,14 +1,15 @@
 import Card from "../Card/Card.jsx";
+import * as m from "./MainColumn.styled";
 
 export default function Column({ status, cards }) {
   return (
-    <div class="main__column">
-      <div class="column__title">
+    <m.MainColumn>
+      <m.ColumnTitle>
         <p>{status}</p>
-      </div>
+      </m.ColumnTitle>
       {cards.map((card) => (
         <Card key={card.id} {...card} />
       ))}
-    </div>
+    </m.MainColumn>
   );
 }
