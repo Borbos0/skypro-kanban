@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
 import { card } from "./components/Data/Data.js";
+import { GlobalStyle } from "./styles/global.styled.js";
 
 function App() {
   const [cardsList, setCards] = useState(card);
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <div class="wrapper">
         <Header setCard={setCards} cardList={cardsList} />
         <Main cardList={cardsList} isLoading={isLoading} />
