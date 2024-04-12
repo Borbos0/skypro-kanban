@@ -41,9 +41,3 @@ export const HeaderNav = styled.nav`
   align-items: center;
   justify-content: center;
 `
-// export const HeaderBlock = styled.div``
-// export const HeaderBlock = styled.div``
-// export const HeaderBlock = styled.div``
-// export const HeaderBlock = styled.div``
-// export const HeaderBlock = styled.div``
-// export const HeaderBlock = styled.div``
