@@ -31,7 +31,7 @@ function SignIn({ setIsAuth }) {
               <button
                 className="modal__btn-enter _hover01"
                 id="btnEnter"
-                onClick={logIn}
+                // onClick={logIn}
               >
                 <Link to={paths.MAIN}>Войти</Link>
               </button>
