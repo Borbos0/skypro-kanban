@@ -3,7 +3,7 @@ import { paths } from "../../lib/const";
 
 function SignIn({ setIsAuth }) {
   const logIn = () => {
-    setIsAuth(true);
+    setIsAuth(false);
   };
   return (
     <div className="wrapper">
@@ -31,7 +31,7 @@ function SignIn({ setIsAuth }) {
               <button
                 className="modal__btn-enter _hover01"
                 id="btnEnter"
-                // onClick={logIn}
+                onClick={logIn}
               >
                 <Link to={paths.MAIN}>Войти</Link>
               </button>
