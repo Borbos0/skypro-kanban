@@ -3,7 +3,7 @@ import { paths } from "../../lib/const";
 
 function SignIn({ setIsAuth }) {
   const logIn = () => {
-    setIsAuth(false);
+    setIsAuth(true);
   };
   return (
     <div className="wrapper">

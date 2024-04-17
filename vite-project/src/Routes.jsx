@@ -10,7 +10,7 @@ import NotFoundPage from "../src/pages/NotFoundPage";
 import { useState } from "react";
 
 const AppRoutes = () => {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <>
