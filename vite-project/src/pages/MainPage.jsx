@@ -11,7 +11,6 @@ const MainPage = (user) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(user);
     console.log(getTasks(user));
     getTasks({ token: user })
       .then((data) => {
