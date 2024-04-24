@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
+import { useState } from "react";
+import { postLogin } from "../../lib/api";
 
-function SignIn({ setIsAuth }) {
-  const logIn = () => {
-    setIsAuth(true);
+function SignIn({ userLogin }) {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onClickLogin = async () => {
+    await postLogin(login, password).then((responseData) => {
+      userLogin(responseData.user.token);
+    });
   };
+
   return (
     <div className="wrapper">
       <div className="container-signin">
@@ -20,6 +28,8 @@ function SignIn({ setIsAuth }) {
                 name="login"
                 id="formlogin"
                 placeholder="Эл. почта"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
               />
               <input
                 className="modal__input"
@@ -27,11 +37,13 @@ function SignIn({ setIsAuth }) {
                 name="password"
                 id="formpassword"
                 placeholder="Пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className="modal__btn-enter _hover01"
                 id="btnEnter"
-                onClick={logIn}
+                onClick={onClickLogin}
               >
                 <Link to={paths.MAIN}>Войти</Link>
               </button>

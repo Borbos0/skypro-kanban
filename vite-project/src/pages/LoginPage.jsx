@@ -1,8 +1,7 @@
-import React from "react";
 import SignIn from "../components/Auth/SignIn";
 
-const LoginPage = ({ setIsAuth }) => {
-  return <SignIn setIsAuth={setIsAuth} />;
+const LoginPage = ({ userLogin }) => {
+  return <SignIn userLogin={userLogin} />;
 };
 
 export default LoginPage;
