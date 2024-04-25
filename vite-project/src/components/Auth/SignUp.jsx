@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
+import { postRegister } from "../../lib/api";
 
-const SignUp = () => {
+const SignUp = (userLogin) => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const onClickRegister = async () => {
+    await postRegister(name, login, password).then((responseData) => {
+      userLogin(responseData.user.token);
+    });
+  };
+
   return (
     <div className="wrapper">
       <div className="container-signup">
@@ -18,6 +29,7 @@ const SignUp = () => {
                 name="first-name"
                 id="first-name"
                 placeholder="Имя"
+                onChange={(e) => setName(e.target.value)}
               />
               <input
                 className="modal__input login"
@@ -25,6 +37,7 @@ const SignUp = () => {
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
+                onChange={(e) => setLogin(e.target.value)}
               />
               <input
                 className="modal__input password-first"
@@ -32,10 +45,12 @@ const SignUp = () => {
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className="modal__btn-signup-ent _hover01"
                 id="SignUpEnter"
+                onClick={onClickRegister}
               >
                 <Link to={paths.MAIN}>Зарегистрироваться</Link>{" "}
               </button>
