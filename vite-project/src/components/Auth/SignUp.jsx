@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { paths } from "../../lib/const";
 import { postRegister } from "../../lib/api";
 import * as U from "./SignUp.Styled";
@@ -8,10 +8,14 @@ function SignUp({ userLogin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const onClickRegister = async () => {
     await postRegister(name, login, password).then((responseData) => {
-      userLogin(responseData.user.token);
+      userLogin(responseData.user.token).then(() => {
+        console.log("aboba");
+        navigate(paths.MAIN);
+      });
     });
   };
 
@@ -52,7 +56,7 @@ function SignUp({ userLogin }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <U.ModalBtntnSignupEnt id="SignUpEnter" onClick={onClickRegister}>
-                <Link to={paths.MAIN}> Зарегистрироваться</Link>{" "}
+                Зарегистрироваться{" "}
               </U.ModalBtntnSignupEnt>
               <div className="modal__form-group">
                 <p>
