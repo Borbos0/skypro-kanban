@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
-import { postLogin, postRegister } from "../../lib/api";
+import { postRegister } from "../../lib/api";
+import * as U from "./SignUp.Styled";
 
 function SignUp({ userLogin }) {
   const [login, setLogin] = useState("");
@@ -15,55 +16,54 @@ function SignUp({ userLogin }) {
   };
 
   return (
-    <div className="wrapper">
-      <div className="container-signup">
-        <div className="modal">
-          <div className="modal__block">
-            <div className="modal__ttl">
+    <U.Wrapper>
+      <U.ContainerSignup>
+        <U.Modal>
+          <U.ModalBlock>
+            <U.ModalTtl>
               <h2>Регистрация</h2>
-            </div>
-            <form className="modal__form-login" id="formLogUp" action="#">
-              <input
-                className="modal__input first-name"
+            </U.ModalTtl>
+            <U.ModalFormLogin id="formLogUp" action="#">
+              <U.FirstName
+                className="first-name"
                 type="text"
                 name="first-name"
                 id="first-name"
                 placeholder="Имя"
+                value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <input
-                className="modal__input login"
+              <U.Login
+                className="login"
                 type="text"
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
+                value={login}
                 onChange={(e) => setLogin(e.target.value)}
               />
-              <input
-                className="modal__input password-first"
+              <U.PasswordFirst
+                className="password-first"
                 type="password"
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button
-                className="modal__btn-signup-ent _hover01"
-                id="SignUpEnter"
-                onClick={onClickRegister}
-              >
+              <U.ModalBtntnSignupEnt id="SignUpEnter" onClick={onClickRegister}>
                 <Link to={paths.MAIN}> Зарегистрироваться</Link>{" "}
-              </button>
+              </U.ModalBtntnSignupEnt>
               <div className="modal__form-group">
                 <p>
                   Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link>
                 </p>
               </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            </U.ModalFormLogin>
+          </U.ModalBlock>
+        </U.Modal>
+      </U.ContainerSignup>
+    </U.Wrapper>
   );
 }
 

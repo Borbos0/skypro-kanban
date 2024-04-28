@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
 import { useState } from "react";
 import { postLogin } from "../../lib/api";
+import * as I from "./SignInStyled";
 
 function SignIn({ userLogin }) {
   const [login, setLogin] = useState("");
@@ -14,16 +15,15 @@ function SignIn({ userLogin }) {
   };
 
   return (
-    <div className="wrapper">
-      <div className="container-signin">
-        <div className="modal">
-          <div className="modal__block">
-            <div className="modal__ttl">
+    <I.Wrapper>
+      <I.ContainerSignin>
+        <I.Modal>
+          <I.ModalBlock>
+            <I.ModalTtl>
               <h2>Вход</h2>
-            </div>
-            <form className="modal__form-login" id="formLogIn" action="#">
+            </I.ModalTtl>
+            <I.ModalFormLogin id="formLogIn" action="#">
               <input
-                className="modal__input"
                 type="text"
                 name="login"
                 id="formlogin"
@@ -32,7 +32,6 @@ function SignIn({ userLogin }) {
                 onChange={(e) => setLogin(e.target.value)}
               />
               <input
-                className="modal__input"
                 type="password"
                 name="password"
                 id="formpassword"
@@ -40,22 +39,22 @@ function SignIn({ userLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button
+              <I.ModalBtnEnter
                 className="modal__btn-enter _hover01"
                 id="btnEnter"
                 onClick={onClickLogin}
               >
                 Войти
-              </button>
+              </I.ModalBtnEnter>
               <div className="modal__form-group">
                 <p>Нужно зарегистрироваться?</p>
                 <Link to={paths.REGISTER}>Регистрируйтесь здесь</Link>
               </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            </I.ModalFormLogin>
+          </I.ModalBlock>
+        </I.Modal>
+      </I.ContainerSignin>
+    </I.Wrapper>
   );
 }
 
