@@ -1,7 +1,7 @@
 export async function getTasks({token}) {
     const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
         headers: {
-            Authorization: `Bearer ${token.user}`,
+            Authorization: `Bearer ${token}`,
         },
         method: "GET",
     });
@@ -22,7 +22,6 @@ export async function postRegister(name, login, password) {
         }),
     });
     const data = await response.json();
-    console.log(data);
     return data;
 }
 

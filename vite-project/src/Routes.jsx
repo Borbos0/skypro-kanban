@@ -21,7 +21,8 @@ const AppRoutes = () => {
   const [user, setUser] = useState(checkLS());
   const navigate = useNavigate();
   function userLogin(userLogin) {
-    localStorage.setItem("user", JSON.stringify(userLogin));
+    localStorage.setItem("user", JSON.stringify(userLogin.token));
+    localStorage.setItem("name", JSON.stringify(userLogin.name));
     setUser(userLogin);
     navigate(paths.MAIN);
   }

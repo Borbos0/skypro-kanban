@@ -9,7 +9,7 @@ function SignIn({ userLogin }) {
 
   const onClickLogin = async () => {
     await postLogin(login, password).then((responseData) => {
-      userLogin(responseData.user.token);
+      userLogin(responseData.user);
     });
   };
 
@@ -45,7 +45,7 @@ function SignIn({ userLogin }) {
                 id="btnEnter"
                 onClick={onClickLogin}
               >
-                <Link to={paths.MAIN}>Войти</Link>
+                Войти
               </button>
               <div className="modal__form-group">
                 <p>Нужно зарегистрироваться?</p>

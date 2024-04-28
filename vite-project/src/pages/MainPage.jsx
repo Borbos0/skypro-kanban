@@ -9,9 +9,8 @@ const MainPage = (user) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [error, setError] = useState(null);
-
   useEffect(() => {
-    getTasks({ token: user })
+    getTasks({ token: user.user.token })
       .then((data) => {
         setCards(data.tasks);
       })
@@ -38,6 +37,7 @@ const MainPage = (user) => {
   return (
     <>
       <Main
+        user={user}
         cardsList={cardsList}
         isLoading={isLoading}
         setCards={Tasks}

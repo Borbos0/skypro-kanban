@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
-import { postRegister } from "../../lib/api";
+import { postLogin, postRegister } from "../../lib/api";
 
-const SignUp = (userLogin) => {
+function SignUp({ userLogin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const SignUp = (userLogin) => {
                 id="SignUpEnter"
                 onClick={onClickRegister}
               >
-                <Link to={paths.MAIN}>Зарегистрироваться</Link>{" "}
+                <Link to={paths.MAIN}> Зарегистрироваться</Link>{" "}
               </button>
               <div className="modal__form-group">
                 <p>
@@ -65,6 +65,6 @@ const SignUp = (userLogin) => {
       </div>
     </div>
   );
-};
+}
 
 export default SignUp;
