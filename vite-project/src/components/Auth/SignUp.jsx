@@ -12,10 +12,8 @@ function SignUp({ userLogin }) {
 
   const onClickRegister = async () => {
     await postRegister(name, login, password).then((responseData) => {
-      userLogin(responseData.user.token).then(() => {
-        console.log("aboba");
-        navigate(paths.MAIN);
-      });
+      console.log(responseData.user);
+      userLogin(responseData.user);
     });
   };
 
@@ -55,7 +53,11 @@ function SignUp({ userLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <U.ModalBtntnSignupEnt id="SignUpEnter" onClick={onClickRegister}>
+              <U.ModalBtntnSignupEnt
+                id="SignUpEnter"
+                onClick={onClickRegister}
+                type="button"
+              >
                 Зарегистрироваться{" "}
               </U.ModalBtntnSignupEnt>
               <div className="modal__form-group">

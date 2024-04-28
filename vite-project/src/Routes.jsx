@@ -17,13 +17,12 @@ function checkLS() {
   }
 }
 const AppRoutes = () => {
-  // const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(checkLS());
   const navigate = useNavigate();
-  function userLogin(userLogin) {
-    localStorage.setItem("user", JSON.stringify(userLogin.token));
-    localStorage.setItem("name", JSON.stringify(userLogin.name));
-    setUser(userLogin);
+  function userLogin(userData) {
+    localStorage.setItem("user", JSON.stringify(userData.token));
+    localStorage.setItem("name", JSON.stringify(userData.name));
+    setUser(userData);
     navigate(paths.MAIN);
   }
   function logout() {

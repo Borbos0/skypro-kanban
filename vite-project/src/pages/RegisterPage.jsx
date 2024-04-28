@@ -1,7 +1,6 @@
-import React from "react";
 import SignUp from "../components/Auth/SignUp";
 
-const RegisterPage = (userLogin) => {
+const RegisterPage = ({ userLogin }) => {
   return <SignUp userLogin={userLogin} />;
 };
 
