@@ -8,10 +8,15 @@ function SignIn({ userLogin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const onClickLogin = async () => {
-    await postLogin(login, password).then((responseData) => {
-      userLogin(responseData.user);
-    });
+  const onClickLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await postLogin(login, password).then((responseData) => {
+        userLogin(responseData.user);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

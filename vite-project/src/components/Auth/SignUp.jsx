@@ -8,13 +8,16 @@ function SignUp({ userLogin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const navigate = useNavigate();
 
-  const onClickRegister = async () => {
-    await postRegister(name, login, password).then((responseData) => {
-      console.log(responseData.user);
-      userLogin(responseData.user);
-    });
+  const onClickRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await postRegister(name, login, password).then((responseData) => {
+        userLogin(responseData.user);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
