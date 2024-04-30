@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
 
-export default function PopExit({ setIsAuth }) {
-  const logOut = () => {
-    setIsAuth(false);
-  };
-
+export default function PopExit({ logout }) {
   return (
     <div className="pop-exit" id="popExit">
       <div className="pop-exit__container">
@@ -18,7 +14,7 @@ export default function PopExit({ setIsAuth }) {
               <button
                 className="pop-exit__exit-yes _hover01"
                 id="exitYes"
-                onClick={logOut}
+                onClick={logout}
               >
                 <Link to={paths.LOGIN}>Да, выйти</Link>{" "}
               </button>

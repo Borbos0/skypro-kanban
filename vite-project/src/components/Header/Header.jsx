@@ -3,7 +3,7 @@ import * as h from "./Header.styled";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
 
-function Header({ cardsList, setCards }) {
+function Header({ user, cardsList, setCards }) {
   const [isOpen, setIsOpen] = useState(false);
   const showProfile = () => {
     setIsOpen((prevState) => !prevState);
@@ -44,7 +44,7 @@ function Header({ cardsList, setCards }) {
                 className="header__user _hover02"
                 onClick={showProfile}
               >
-                Ivan Ivanov
+                {user.user.name}
               </a>
               {isOpen && (
                 <div
@@ -52,8 +52,8 @@ function Header({ cardsList, setCards }) {
                   id="user-set-target"
                 >
                   {/* <!-- <a href="">x</a> --> */}
-                  <p className="pop-user-set__name">Ivan Ivanov</p>
-                  <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+                  <p className="pop-user-set__name">{user.user.name}</p>
+                  <p className="pop-user-set__mail">{user.user.login}</p>
                   <div className="pop-user-set__theme">
                     <p>Темная тема</p>
                     <input

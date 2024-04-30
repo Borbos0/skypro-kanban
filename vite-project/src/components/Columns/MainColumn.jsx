@@ -8,7 +8,13 @@ export default function Column({ status, cards }) {
         <p>{status}</p>
       </m.ColumnTitle>
       {cards.map((card) => (
-        <Card key={card.id} {...card} />
+        <Card
+          key={card._id}
+          tag={card.topic}
+          description={card.description}
+          date={card.date}
+          id={card._id}
+        />
       ))}
     </m.MainColumn>
   );
