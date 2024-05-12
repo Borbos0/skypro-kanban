@@ -7,7 +7,7 @@ import { useTaskContext } from "../contexts/hooks/useTask";
 
 const MainPage = () => {
   const { user } = useUserContext();
-  const { task, setTask } = useTaskContext();
+  const { setTask } = useTaskContext();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +27,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Main user={user} cardsList={task} isLoading={isLoading} error={error} />
+      <Main isLoading={isLoading} error={error} />
       <Outlet />
     </>
   );

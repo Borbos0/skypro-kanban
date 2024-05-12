@@ -2,8 +2,11 @@ import Column from "../Columns/MainColumn.jsx";
 import { statusList } from "../../../Data.js";
 import * as m from "./Main.styled";
 import Header from "../Header/Header.jsx";
+import { useTaskContext } from "../../contexts/hooks/useTask.jsx";
 
-export default function Main({ cardsList, isLoading, error }) {
+export default function Main({ isLoading, error }) {
+  const { task } = useTaskContext();
+
   return (
     <div className="wrapper">
       <Header />
@@ -23,7 +26,7 @@ export default function Main({ cardsList, isLoading, error }) {
                         <Column
                           key={index}
                           status={status}
-                          cards={cardsList.filter(
+                          cards={task.filter(
                             (theme) => theme.status === status
                           )}
                         />
