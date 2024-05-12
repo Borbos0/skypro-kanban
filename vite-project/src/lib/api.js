@@ -24,6 +24,22 @@ export async function postRegister(name, login, password) {
     const data = await response.json();
     return data;
 }
+export async function postTask({title, topic, description, date, token}) {
+    const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            title,
+            topic,
+            description,
+            date,
+        }),
+    });
+    const data = await response.json();
+    return data;
+}
 
 export async function postLogin(login, password){
     const response = await fetch("https://wedev-api.sky.pro/api/user/login", {

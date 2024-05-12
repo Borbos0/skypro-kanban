@@ -3,10 +3,10 @@ import { statusList } from "../../../Data.js";
 import * as m from "./Main.styled";
 import Header from "../Header/Header.jsx";
 
-export default function Main({ cardsList, isLoading, setCards, error }) {
+export default function Main({ cardsList, isLoading, error }) {
   return (
     <div className="wrapper">
-      <Header setCards={setCards} cardsList={cardsList} />
+      <Header />
       <m.Main>
         <div className="container">
           <m.MainBlock>

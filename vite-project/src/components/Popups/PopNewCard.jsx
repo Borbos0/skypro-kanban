@@ -1,19 +1,47 @@
+import { useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import * as C from "./PopNewCard.styled";
+import { postTask } from "../../lib/api";
+import { Link, useNavigate } from "react-router-dom";
+import { paths } from "../../lib/const";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
 function PopNewCard() {
+  const [newTask, setNewTask] = useState({
+    title: "",
+    description: "",
+    topic: "",
+  });
+  const { user } = useUserContext();
+  const [selected, setSelected] = useState();
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const taskData = { ...newTask, date: selected };
+    postTask({ ...taskData, token: user?.token })
+      .then((responseData) => {
+        console.log(responseData);
+        navigate(-1);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <C.PopNewCard id="popNewCard">
       <C.PopNewCardContainer>
         <C.PopNewCardBlock>
           <C.PopNewCardContent>
             <C.PopNewCardTtl>Создание задачи</C.PopNewCardTtl>
-            <C.PopNewCardClose>&#10006;</C.PopNewCardClose>
+            <C.PopNewCardClose>
+              <Link to={paths.MAIN}>&#10006;</Link>
+            </C.PopNewCardClose>
             <C.PopNewCardWrap>
               <C.PopNewCardForm id="formNewCard" action="#">
                 <C.FormNewBlock>
                   <C.Subttl>Название задачи</C.Subttl>
                   <C.FormNewInput
+                    onChange={(e) =>
+                      setNewTask({ ...newTask, title: e.target.value })
+                    }
                     type="text"
                     name="name"
                     id="formTitle"
@@ -24,6 +52,9 @@ function PopNewCard() {
                 <C.FormNewBlock>
                   <C.Subttl>Описание задачи</C.Subttl>
                   <C.FormNewArea
+                    onChange={(e) =>
+                      setNewTask({ ...newTask, description: e.target.value })
+                    }
                     name="text"
                     id="textArea"
                     placeholder="Введите описание задачи..."
@@ -130,11 +161,41 @@ function PopNewCard() {
                   </div>
                 </div>
               </div> */}
-              <Calendar />
+              <Calendar selected={selected} setSelected={setSelected} />
             </C.PopNewCardWrap>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
-              <div className="categories__themes">
+              <label>
+                Web Design
+                <input
+                  type="radio"
+                  value="Web Design"
+                  onChange={(e) =>
+                    setNewTask({ ...newTask, topic: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Research
+                <input
+                  type="radio"
+                  value="Research"
+                  onChange={(e) =>
+                    setNewTask({ ...newTask, topic: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Copywriting
+                <input
+                  type="radio"
+                  value="Copywriting"
+                  onChange={(e) =>
+                    setNewTask({ ...newTask, topic: e.target.value })
+                  }
+                />
+              </label>
+              {/* <div className="categories__themes">
                 <div className="categories__theme _orange _active-category">
                   <p className="_orange">Web Design</p>
                 </div>
@@ -144,9 +205,13 @@ function PopNewCard() {
                 <div className="categories__theme _purple">
                   <p className="_purple">Copywriting</p>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <button className="form-new__create _hover01" id="btnCreate">
+            <button
+              onClick={handleSubmit}
+              className="form-new__create _hover01"
+              id="btnCreate"
+            >
               Создать задачу
             </button>
           </C.PopNewCardContent>

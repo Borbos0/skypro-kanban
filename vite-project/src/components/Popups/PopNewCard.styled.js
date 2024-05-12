@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const PopNewCard = styled.div`
-  display: none;
+  display: block;
   width: 100%;
   min-width: 375px;
   height: 100%;
@@ -25,7 +25,7 @@ export const PopNewCardBlock = styled.div`
   display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
-  max-width: 630px;
+  max-width: 900px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
@@ -79,6 +79,7 @@ export const FormNewInput = styled.input`
   outline: none;
   padding: 14px;
   background: transparent;
+  color: black;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
   font-size: 14px;
@@ -105,6 +106,7 @@ export const FormNewArea = styled.textarea`
   outline: none;
   padding: 14px;
   background: transparent;
+  color: black;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
   font-size: 14px;

@@ -1,11 +1,7 @@
-import React from "react";
-
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 
-function Calendar() {
-  const [selected, setSelected] = React.useState();
-
+function Calendar({ selected, setSelected }) {
   let footer = <p>Please pick a day.</p>;
   if (selected) {
     footer = <p>You picked {format(selected, "PP")}.</p>;
