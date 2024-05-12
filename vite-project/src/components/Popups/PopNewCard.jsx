@@ -1,55 +1,36 @@
-import { Link, useParams } from "react-router-dom";
-import { paths } from "../../lib/const";
-import * as b from "./PopBrowse.styled";
+import Calendar from "../Calendar/Calendar";
+import * as C from "./PopNewCard.styled";
 
-const PopBrowse = () => {
-  const params = useParams();
-
+function PopNewCard() {
   return (
-    <b.PopBrowse>
-      <b.PopBrowseContainer>
-        <b.PopBrowseBlock>
-          <b.PopBrowseContent>
-            <b.PopBrowseTopBlock>
-              <b.PopBrowseTtl>Название задачи номер {params.id}</b.PopBrowseTtl>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </b.PopBrowseTopBlock>
-            <div className="pop-browse__status status">
-              <p className="status__p subttl">Статус</p>
-              <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
-              </div>
-            </div>
-            <b.PopBrowseWrap>
-              <b.PopBrowseForm>
-                <div className="form-browse__block">
-                  <label className="subttl">Описание задачи</label>
-                  <textarea
-                    className="form-browse__area"
+    <C.PopNewCard id="popNewCard">
+      <C.PopNewCardContainer>
+        <C.PopNewCardBlock>
+          <C.PopNewCardContent>
+            <C.PopNewCardTtl>Создание задачи</C.PopNewCardTtl>
+            <C.PopNewCardClose>&#10006;</C.PopNewCardClose>
+            <C.PopNewCardWrap>
+              <C.PopNewCardForm id="formNewCard" action="#">
+                <C.FormNewBlock>
+                  <C.Subttl>Название задачи</C.Subttl>
+                  <C.FormNewInput
+                    type="text"
+                    name="name"
+                    id="formTitle"
+                    placeholder="Введите название задачи..."
+                    autoFocus
+                  />
+                </C.FormNewBlock>
+                <C.FormNewBlock>
+                  <C.Subttl>Описание задачи</C.Subttl>
+                  <C.FormNewArea
                     name="text"
-                    id="textArea01"
-                    readOnly
+                    id="textArea"
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </b.PopBrowseForm>
-              <div className="pop-new-card__calendar calendar">
+                  ></C.FormNewArea>
+                </C.FormNewBlock>
+              </C.PopNewCardForm>
+              {/* <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
                 <div className="calendar__block">
                   <div className="calendar__nav">
@@ -100,9 +81,7 @@ const PopBrowse = () => {
                       <div className="calendar__cell _cell-day ">6</div>
                       <div className="calendar__cell _cell-day">7</div>
                       <div className="calendar__cell _cell-day _current">8</div>
-                      <div className="calendar__cell _cell-day _weekend _active-day">
-                        9
-                      </div>
+                      <div className="calendar__cell _cell-day _weekend">9</div>
                       <div className="calendar__cell _cell-day _weekend">
                         10
                       </div>
@@ -145,56 +124,36 @@ const PopBrowse = () => {
                   <input type="hidden" id="datepick_value" value="08.09.2023" />
                   <div className="calendar__period">
                     <p className="calendar__p date-end">
-                      Срок исполнения:{" "}
-                      <span className="date-control">09.09.23</span>
+                      Выберите срок исполнения{" "}
+                      <span className="date-control"></span>.
                     </p>
                   </div>
                 </div>
-              </div>
-            </b.PopBrowseWrap>
-            <div className="theme-down__categories theme-down">
+              </div> */}
+              <Calendar />
+            </C.PopNewCardWrap>
+            <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
-              <div className="categories__theme _orange _active-category">
-                <p className="_orange">Web Design</p>
+              <div className="categories__themes">
+                <div className="categories__theme _orange _active-category">
+                  <p className="_orange">Web Design</p>
+                </div>
+                <div className="categories__theme _green">
+                  <p className="_green">Research</p>
+                </div>
+                <div className="categories__theme _purple">
+                  <p className="_purple">Copywriting</p>
+                </div>
               </div>
             </div>
-            <div className="pop-browse__btn-browse ">
-              <div className="btn-group">
-                <button className="btn-browse__edit _btn-bor _hover03">
-                  <a href="#">Редактировать задачу</a>
-                </button>
-                <button className="btn-browse__delete _btn-bor _hover03">
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
-              <button className="btn-browse__close _btn-bg _hover01">
-                <Link to={paths.MAIN}>Закрыть</Link>
-              </button>
-            </div>
-            <div className="pop-browse__btn-edit _hide">
-              <div className="btn-group">
-                <button className="btn-edit__edit _btn-bg _hover01">
-                  <a href="#">Сохранить</a>
-                </button>
-                <button className="btn-edit__edit _btn-bor _hover03">
-                  <a href="#">Отменить</a>
-                </button>
-                <button
-                  className="btn-edit__delete _btn-bor _hover03"
-                  id="btnDelete"
-                >
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
-              <button className="btn-edit__close _btn-bg _hover01">
-                <Link to={paths.MAIN}>Закрыть</Link>
-              </button>
-            </div>
-          </b.PopBrowseContent>
-        </b.PopBrowseBlock>
-      </b.PopBrowseContainer>
-    </b.PopBrowse>
+            <button className="form-new__create _hover01" id="btnCreate">
+              Создать задачу
+            </button>
+          </C.PopNewCardContent>
+        </C.PopNewCardBlock>
+      </C.PopNewCardContainer>
+    </C.PopNewCard>
   );
-};
+}
 
-export default PopBrowse;
+export default PopNewCard;

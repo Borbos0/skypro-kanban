@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import Main from "../components/Main/Main";
 import { Outlet } from "react-router-dom";
 import { getTasks } from "../lib/api";
+import { useUserContext } from "../contexts/hooks/useUser";
 
-const MainPage = (user) => {
+const MainPage = () => {
+  const { user } = useUserContext();
   const [cardsList, setCards] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
 
   const [error, setError] = useState(null);
   useEffect(() => {
-    getTasks({ token: user.user.token })
+    getTasks({ token: user.token })
       .then((data) => {
         setCards(data.tasks);
       })

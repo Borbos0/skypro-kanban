@@ -1,7 +1,7 @@
 import SignUp from "../components/Auth/SignUp";
 
-const RegisterPage = ({ userLogin }) => {
-  return <SignUp userLogin={userLogin} />;
+const RegisterPage = () => {
+  return <SignUp />;
 };
 
 export default RegisterPage;

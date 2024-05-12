@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
-export default function PopExit({ logout }) {
+export default function PopExit() {
+  const { logout } = useUserContext();
   return (
     <div className="pop-exit" id="popExit">
       <div className="pop-exit__container">

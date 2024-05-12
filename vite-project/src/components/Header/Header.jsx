@@ -2,8 +2,10 @@ import { useState } from "react";
 import * as h from "./Header.styled";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
-function Header({ user, cardsList, setCards }) {
+function Header({ cardsList, setCards }) {
+  const { user } = useUserContext();
   const [isOpen, setIsOpen] = useState(false);
   const showProfile = () => {
     setIsOpen((prevState) => !prevState);
@@ -44,7 +46,7 @@ function Header({ user, cardsList, setCards }) {
                 className="header__user _hover02"
                 onClick={showProfile}
               >
-                {user.user.name}
+                {user.name}
               </a>
               {isOpen && (
                 <div
@@ -52,8 +54,8 @@ function Header({ user, cardsList, setCards }) {
                   id="user-set-target"
                 >
                   {/* <!-- <a href="">x</a> --> */}
-                  <p className="pop-user-set__name">{user.user.name}</p>
-                  <p className="pop-user-set__mail">{user.user.login}</p>
+                  <p className="pop-user-set__name">{user.name}</p>
+                  <p className="pop-user-set__mail">{user.login}</p>
                   <div className="pop-user-set__theme">
                     <p>Темная тема</p>
                     <input
@@ -233,9 +235,13 @@ function Header({ user, cardsList, setCards }) {
                   </div>
                 </div>
               </div>
-              <button className="form-new__create _hover01" id="btnCreate">
+              <Link
+                to={paths.NEWCARD}
+                className="form-new__create _hover01"
+                id="btnCreate"
+              >
                 Создать задачу
-              </button>
+              </Link>
             </div>
           </div>
         </div>
