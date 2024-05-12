@@ -8,6 +8,7 @@ import LoginPage from "../src/pages/LoginPage";
 import CardPage from "../src/pages/CardPage";
 import NewCardPage from "../src/pages/NewCardPage";
 import NotFoundPage from "../src/pages/NotFoundPage";
+import EditCardPage from "../src/pages/EditPage";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
             <Route path={paths.EXIT} element={<ExitPage />} />
             <Route path={paths.CARD} element={<CardPage />} />
             <Route path={paths.NEWCARD} element={<NewCardPage />} />
+            <Route path={paths.EDIT} element={<EditCardPage />} />
           </Route>
         </Route>
 

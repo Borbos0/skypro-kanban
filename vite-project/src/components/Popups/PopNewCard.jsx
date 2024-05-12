@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Calendar from "../Calendar/Calendar";
-import * as C from "./PopNewCard.styled";
+import * as C from "./PopBrowse.styled";
 import { postTask } from "../../lib/api";
 import { Link, useNavigate } from "react-router-dom";
 import { paths } from "../../lib/const";
