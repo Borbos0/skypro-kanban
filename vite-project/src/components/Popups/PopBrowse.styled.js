@@ -25,7 +25,7 @@ export const PopBrowseBlock = styled.div`
   display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
-  max-width: 900px;
+  max-width: 700px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
@@ -102,7 +102,7 @@ export const PopNewCardBlock = styled.div`
   display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
-  max-width: 900px;
+  max-width: 700px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
@@ -296,4 +296,112 @@ export const BtnBrowseClose = styled.button`
   margin-right: 8px;
   padding: 0 14px;
   height: 30px;
+`
+export const NewCardCategoris = styled.div`
+  margin-bottom: 20px;
+  & p {
+    margin-bottom: 14px;
+  }
+`
+
+const topicTheme = {
+  "Web Design": {
+    backgroundColor: "#E9D4FF",
+    color: "#9a48f1",
+  },
+  Research: {
+    backgroundColor: "#B4FDD1",
+    color: "#06b16e",
+  },
+  Copywriting: {
+    backgroundColor: "#FFE4C2",
+    color: "#ff6d00",
+  },
+}
+
+export const NewCardCategorisThemes = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+`
+
+export const NewCardCategorisTheme = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${(props) =>
+    topicTheme[props.$topic]?.backgroundColor || "gray"};
+
+  color: ${(props) => topicTheme[props.$topic]?.color || "black"};
+`
+export const CategoriesThemeOrangeLabel = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: #FFE4C2;
+  color: #FF6D00;
+  &:hover {
+    opacity: 1 !important;
+  }
+`
+
+export const CategoriesThemeOrangeInput = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
+`
+
+export const CategoriesThemeGreenLabel = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: #B4FDD1;
+  color: #06B16E;
+  
+  &:hover {
+    opacity: 1 !important;
+  }
+`
+
+export const CategoriesThemeGreenInput = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
+`
+
+export const CategoriesThemePurpleLabel = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: #E9D4FF;
+  color: #9A48F1;
+  &:hover {
+    opacity: 1 !important;
+  }
+`
+
+export const CategoriesThemePurpleInput = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
 `

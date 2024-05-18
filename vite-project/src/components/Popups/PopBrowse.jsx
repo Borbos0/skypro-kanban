@@ -8,7 +8,6 @@ const PopBrowse = () => {
   const params = useParams();
   const { task } = useTaskContext();
   const currentTask = task.find((element) => params.id === element._id);
-
   return (
     <b.PopBrowse>
       <b.PopBrowseContainer>
