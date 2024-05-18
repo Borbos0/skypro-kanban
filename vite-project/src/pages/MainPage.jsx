@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import Main from "../components/Main/Main";
 import { Outlet } from "react-router-dom";
 import { getTasks } from "../lib/api";
+import { useUserContext } from "../contexts/hooks/useUser";
+import { useTaskContext } from "../contexts/hooks/useTask";
 
-const MainPage = (user) => {
-  const [cardsList, setCards] = useState();
+const MainPage = () => {
+  const { user } = useUserContext();
+  const { setTask } = useTaskContext();
 
   const [isLoading, setIsLoading] = useState(true);
 
   const [error, setError] = useState(null);
   useEffect(() => {
-    getTasks({ token: user.user.token })
+    getTasks({ token: user.token })
       .then((data) => {
-        setCards(data.tasks);
+        setTask(data.tasks);
       })
       .catch((err) => {
         setError(err.message);
@@ -20,29 +23,11 @@ const MainPage = (user) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [user, setTask]);
 
-  function Tasks() {
-    setCards([
-      ...cardsList,
-      {
-        id: cardsList.length + 1,
-        statusName: "Без статуса",
-        tag: "Research",
-        description: "New task by button",
-        date: "01.04.23",
-      },
-    ]);
-  }
   return (
     <>
-      <Main
-        user={user}
-        cardsList={cardsList}
-        isLoading={isLoading}
-        setCards={Tasks}
-        error={error}
-      />
+      <Main isLoading={isLoading} error={error} />
       <Outlet />
     </>
   );

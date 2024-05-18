@@ -5,4 +5,6 @@ export const paths = {
     LOGIN: "/login",
     REGISTER: "/register",
     CARD: "/card/:id",
+    NEWCARD: "/new-card",
+    EDIT: "/card/:id/edit",
   };

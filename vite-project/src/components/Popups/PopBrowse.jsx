@@ -1,19 +1,24 @@
 import { Link, useParams } from "react-router-dom";
 import { paths } from "../../lib/const";
 import * as b from "./PopBrowse.styled";
+import { useTaskContext } from "../../contexts/hooks/useTask";
+import Calendar from "../Calendar/Calendar";
 
 const PopBrowse = () => {
   const params = useParams();
-
+  const { task } = useTaskContext();
+  const currentTask = task.find((element) => params.id === element._id);
   return (
     <b.PopBrowse>
       <b.PopBrowseContainer>
         <b.PopBrowseBlock>
           <b.PopBrowseContent>
             <b.PopBrowseTopBlock>
-              <b.PopBrowseTtl>Название задачи номер {params.id}</b.PopBrowseTtl>
+              <b.PopBrowseTtl>
+                Название задачи {currentTask.title}
+              </b.PopBrowseTtl>
               <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
+                <p className="_orange">{currentTask.topic}</p>
               </div>
             </b.PopBrowseTopBlock>
             <div className="pop-browse__status status">
@@ -39,15 +44,14 @@ const PopBrowse = () => {
             <b.PopBrowseWrap>
               <b.PopBrowseForm>
                 <div className="form-browse__block">
-                  <label for="textArea01" className="subttl">
-                    Описание задачи
-                  </label>
+                  <label className="subttl">Описание задачи</label>
                   <textarea
                     className="form-browse__area"
                     name="text"
                     id="textArea01"
-                    readonly
+                    readOnly
                     placeholder="Введите описание задачи..."
+                    defaultValue={currentTask.title}
                   ></textarea>
                 </div>
               </b.PopBrowseForm>
@@ -79,7 +83,8 @@ const PopBrowse = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="calendar__content">
+                  <Calendar />
+                  {/* <div className="calendar__content">
                     <div className="calendar__days-names">
                       <div className="calendar__day-name">пн</div>
                       <div className="calendar__day-name">вт</div>
@@ -142,7 +147,7 @@ const PopBrowse = () => {
                         1
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <input type="hidden" id="datepick_value" value="08.09.2023" />
                   <div className="calendar__period">

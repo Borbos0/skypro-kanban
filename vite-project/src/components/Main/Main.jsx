@@ -3,10 +3,10 @@ import { statusList } from "../../../Data.js";
 import * as m from "./Main.styled";
 import Header from "../Header/Header.jsx";
 
-export default function Main({ user, cardsList, isLoading, setCards, error }) {
+export default function Main({ isLoading, error }) {
   return (
     <div className="wrapper">
-      <Header user={user} setCards={setCards} cardsList={cardsList} />
+      <Header />
       <m.Main>
         <div className="container">
           <m.MainBlock>
@@ -20,13 +20,7 @@ export default function Main({ user, cardsList, isLoading, setCards, error }) {
                   ) : (
                     <>
                       {statusList.map((status, index) => (
-                        <Column
-                          key={index}
-                          status={status}
-                          cards={cardsList.filter(
-                            (theme) => theme.status === status
-                          )}
-                        />
+                        <Column key={index} status={status} />
                       ))}
                     </>
                   )}

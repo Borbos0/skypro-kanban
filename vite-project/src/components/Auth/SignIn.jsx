@@ -3,8 +3,10 @@ import { paths } from "../../lib/const";
 import { useState } from "react";
 import { postLogin } from "../../lib/api";
 import * as I from "./SignInStyled";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
-function SignIn({ userLogin }) {
+function SignIn() {
+  const { userLogin } = useUserContext();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 

@@ -1,7 +1,7 @@
 import SignIn from "../components/Auth/SignIn";
 
-const LoginPage = ({ userLogin }) => {
-  return <SignIn userLogin={userLogin} />;
+const LoginPage = () => {
+  return <SignIn />;
 };
 
 export default LoginPage;

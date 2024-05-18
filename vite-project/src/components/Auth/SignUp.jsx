@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { paths } from "../../lib/const";
 import { postRegister } from "../../lib/api";
 import * as U from "./SignUp.Styled";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
-function SignUp({ userLogin }) {
+function SignUp() {
+  const { userLogin } = useUserContext();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
