@@ -6,5 +6,4 @@ export const paths = {
     REGISTER: "/register",
     CARD: "/card/:id",
     NEWCARD: "/new-card",
-    EDIT: "/card/:id/edit",
   };

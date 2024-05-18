@@ -226,19 +226,54 @@ export const StatusThemes = styled.div`
 
 export const StatusThemeHide = styled.div`
   border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid #94A6BE66;
   color: #94a6be;
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
   display: block;
-  background: #94a6be;
+  background-color: #94a6be;
   color: #ffffff;
-`
-export const StatusThemeHideP = styled.p`
+  p {
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+}
+`
+export const CategoryTheme = styled.div`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 4px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: #B4FDD1;
+  color: #06B16E;
+  p {
+  opacity: 1 !important;
+  }
+`
+export const CategoriesTheme = styled.div`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: #EAEEF6;
+  &:hover {
+  background-color: #94A6BE;
+  color: #FFFFFF;
+  opacity: 1;
+  }
+  p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+  }
 `
 export const FormBrowseBlock = styled.div`
   display: flex;
@@ -257,6 +292,14 @@ export const FormBrowseArea = styled.textarea`
   letter-spacing: -0.14px;
   margin-top: 14px;
   height: 200px;
+  color: #94A6BE;
+  ::-moz-placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+  }
   ::placeholder {
     font-weight: 400;
     font-size: 14px;
@@ -270,10 +313,18 @@ export const PopBrowseBtnBrowse = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-   margin-top: 15px; 
+  margin-top: 15px;
+  button {
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 14px;
+  gap: 8px;
+  } 
 `
+
 export const BtnGroup = styled.div`
-margin-right: 8px;
+display: flex;
+gap: 8px;
 `
 export const BtnBrowseEditBtnBor = styled.button`
   border-radius: 4px;
@@ -285,6 +336,10 @@ export const BtnBrowseEditBtnBor = styled.button`
   padding: 0 14px;
   height: 30px;
   margin-right: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
 `
 export const BtnBrowseClose = styled.button`
   border-radius: 4px;
@@ -330,7 +385,7 @@ export const NewCardCategorisTheme = styled.label`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
@@ -343,7 +398,7 @@ export const CategoriesThemeOrangeLabel = styled.label`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
@@ -365,7 +420,7 @@ export const CategoriesThemeGreenLabel = styled.label`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
@@ -388,7 +443,7 @@ export const CategoriesThemePurpleLabel = styled.label`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
@@ -404,4 +459,39 @@ export const CategoriesThemePurpleInput = styled.input`
   &:checked + label {
     opacity: 1 !important;
   }
+`
+
+export const NewCardFormInput = styled.input`
+  width: 100%;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+`
+export const BtnBrowseEdit = styled.button`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-right: 8px;
+  button {
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 14px;
+  }
+`
+
+export const PopBrowseStatusThemeInput = styled.input`
+  display: none;
+    &:checked + label {
+      opacity: 1 !important;
+    }
+ `
+ export const Test = styled.div`
+ display: flex;
+ flex-direction: row;
 `

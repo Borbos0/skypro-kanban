@@ -548,7 +548,7 @@
   display: block;
   margin-bottom: 20px;
 }*/
-.pop-browse__btn-browse, .pop-browse__btn-edit {
+/* .pop-browse__btn-browse, .pop-browse__btn-edit {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -561,7 +561,7 @@
 }
 .pop-browse__btn-browse .btn-group button, .pop-browse__btn-edit .btn-group button {
   margin-right: 8px;
-}
+} */
 
 .form-browse__block {
   display: flex;

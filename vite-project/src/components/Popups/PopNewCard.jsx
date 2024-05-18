@@ -112,52 +112,8 @@ function PopNewCard() {
               <C.CategoriesThemePurpleLabel htmlFor="radio3">
                 Copywriting
               </C.CategoriesThemePurpleLabel>
-              {/* <C.NewCardCategorisThemes $topic="Web Design">
-                Web Design
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Web Design"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes>
-              <C.NewCardCategorisThemes $topic="Research">
-                Research
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Research"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes>
-              <C.NewCardCategorisThemes $topic="Copywriting">
-                Copywriting
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Copywriting"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes> */}
-              {/* <div className="categories__themes">
-                <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
-                </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
-                </div>
-              </div> */}
             </C.NewCardCategoris>
-            {showError && <p style={{ color: "red" }}>Зполните все поля!</p>}
+            {showError && <p style={{ color: "red" }}>Заполните все поля!</p>}
             <button
               onClick={handleSubmit}
               className="form-new__create _hover01"

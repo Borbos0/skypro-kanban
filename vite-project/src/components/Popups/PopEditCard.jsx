@@ -1,10 +1,23 @@
-import { Link, useParams } from "react-router-dom";
-import * as S from "../PopBrowse/PopBrowse.styled";
+import { Link, Navigate, useParams } from "react-router-dom";
+import * as S from "./PopBrowse.styled";
 import Calendar from "../Calendar/Calendar";
 import { paths } from "../../lib/const";
+import { useTaskContext } from "../../contexts/hooks/useTask";
+import { useUserContext } from "../../contexts/hooks/useUser";
+import { deleteTask } from "../../lib/api";
 
 function PopEditCard() {
   const { id } = useParams();
+  const { task, createNewTask } = useTaskContext();
+  const { user } = useUserContext();
+
+  const deleteItem = async () => {
+    await deleteTask({ id, token: user.token }).then((responseData) => {
+      createNewTask(responseData.tasks);
+      Navigate(paths.MAIN);
+    });
+  };
+
   return (
     <S.PopBrowse id="popBrowse">
       <S.PopBrowseContainer>
@@ -19,21 +32,21 @@ function PopEditCard() {
             <S.PopBrowseStatus>
               <S.StatusPSubttl>Статус</S.StatusPSubttl>
               <S.StatusThemes>
-                <S.StatusThemeHide>
-                  <S.StatusThemeHideP>Без статуса</S.StatusThemeHideP>
-                </S.StatusThemeHide>
-                <div className="status__theme _gray">
+                <S.CategoriesTheme>
+                  <p>Без статуса</p>
+                </S.CategoriesTheme>
+                <S.CategoriesTheme>
                   <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
+                </S.CategoriesTheme>
+                <S.CategoriesTheme>
                   <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
+                </S.CategoriesTheme>
+                <S.CategoriesTheme>
                   <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
+                </S.CategoriesTheme>
+                <S.CategoriesTheme>
                   <p>Готово</p>
-                </div>
+                </S.CategoriesTheme>
               </S.StatusThemes>
             </S.PopBrowseStatus>
 
@@ -64,7 +77,9 @@ function PopEditCard() {
                 <S.BtnBrowseEditBtnBor>
                   Редактировать задачу
                 </S.BtnBrowseEditBtnBor>
-                <S.BtnBrowseEditBtnBor>Удалить задачу</S.BtnBrowseEditBtnBor>
+                <S.BtnBrowseEditBtnBor onClick={deleteItem}>
+                  Удалить задачу
+                </S.BtnBrowseEditBtnBor>
               </S.BtnGroup>
 
               <Link to={paths.MAIN}>
@@ -83,7 +98,9 @@ function PopEditCard() {
                   className="btn-edit__delete _btn-bor _hover03"
                   id="btnDelete"
                 >
-                  <a href="#">Удалить задачу</a>
+                  <a href="#" onClick={deleteItem}>
+                    Удалить задачу
+                  </a>
                 </button>
               </div>
               <button className="btn-edit__close _btn-bg _hover01">
