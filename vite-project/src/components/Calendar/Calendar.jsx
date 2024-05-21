@@ -6,6 +6,7 @@ import ru from "date-fns/locale/ru";
 export default function Calendar({ selectedDate, setSelectedDate }) {
   let footer = <p>Выберите срок исполнения.</p>;
   if (selectedDate) {
+    console.log(selectedDate);
     footer = <p>Вы выбрали {format(selectedDate, "PP", { locale: ru })}</p>;
   }
   return (

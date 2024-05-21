@@ -22,12 +22,22 @@ const PopBrowse = () => {
 
   useEffect(() => {
     if (task.length) {
-      const taksItemCurrent = task.find(
+      const taskItemCurrent = task.find(
         (responseData) => responseData._id === id
       );
-      setEditingTask(taksItemCurrent);
+      setEditingTask(taskItemCurrent);
+      setSelected(taskItemCurrent.date);
     }
   }, [task]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    createNewTask({
+      ...task,
+      [name]: value,
+    });
+  };
 
   const deleteItem = async () => {
     await deleteTask({ id, token: user.token })
@@ -46,13 +56,13 @@ const PopBrowse = () => {
   };
 
   const editItem = async () => {
-    console.log(`Дата ${selected}`);
     const editingTaskData = {
       ...editingTask,
       date: selected,
       id,
       token: user.token,
     };
+    console.log(editingTaskData);
     await editTask(editingTaskData).then((response) => {
       createNewTask(response.tasks);
     });
@@ -122,7 +132,7 @@ const PopBrowse = () => {
                   statusList.map((status) => (
                     <B.StatusThemes key={status}>
                       <B.CategoriesTheme>
-                        <p>{status}</p>
+                        {status}
                         <B.PopBrowseStatusThemeInput
                           type="radio"
                           name="status"
@@ -156,6 +166,12 @@ const PopBrowse = () => {
                       id="textArea01"
                       placeholder="Введите описание задачи..."
                       defaultValue={currentTask.description}
+                      onChange={(e) =>
+                        setEditingTask({
+                          ...editingTask,
+                          description: e.target.value,
+                        })
+                      }
                     ></B.FormBrowseArea>
                   </div>
                 </B.PopBrowseForm>
