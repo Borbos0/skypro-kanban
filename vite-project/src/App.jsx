@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import { GlobalStyle } from "./styles/global.styled.js";
 import AppRoutes from "./Routes.jsx";
 

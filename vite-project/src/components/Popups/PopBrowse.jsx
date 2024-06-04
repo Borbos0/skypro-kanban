@@ -18,6 +18,7 @@ const PopBrowse = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
   const [selected, setSelected] = useState();
+  const [showError, setShowError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,14 +31,13 @@ const PopBrowse = () => {
     }
   }, [task]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name, value);
-    createNewTask({
-      ...task,
-      [name]: value,
-    });
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   createNewTask({
+  //     ...task,
+  //     [name]: value,
+  //   });
+  // };
 
   const deleteItem = async () => {
     await deleteTask({ id, token: user.token })
@@ -46,7 +46,7 @@ const PopBrowse = () => {
         navigate(paths.MAIN);
       })
       .catch((error) => {
-        console.log(error);
+        setShowError(error.message);
         navigate(paths.NEWCARD);
       });
   };
@@ -60,13 +60,16 @@ const PopBrowse = () => {
       ...editingTask,
       date: selected,
       id,
-      token: user.token,
+      token: user,
     };
-    console.log(editingTaskData);
-    await editTask(editingTaskData).then((response) => {
-      createNewTask(response.tasks);
-    });
-    navigate(paths.MAIN);
+    await editTask(editingTaskData)
+      .then((response) => {
+        createNewTask(response.tasks);
+        navigate(paths.MAIN);
+      })
+      .catch((error) => {
+        setShowError(error.message);
+      });
   };
 
   const currentTask = task.find((element) => params.id === element._id);
@@ -175,7 +178,7 @@ const PopBrowse = () => {
                     ></B.FormBrowseArea>
                   </div>
                 </B.PopBrowseForm>
-                <Calendar selected={selected} setSelected={setSelected} />
+                <Calendar />
               </B.PopBrowseWrap>
             ) : (
               <B.PopBrowseWrap>
@@ -191,13 +194,10 @@ const PopBrowse = () => {
                     ></B.FormBrowseArea>
                   </div>
                 </B.PopBrowseForm>
-                <Calendar
-                  selected={editingTask?.date}
-                  setSelected={editingTask?.date}
-                />
+                <Calendar />
               </B.PopBrowseWrap>
             )}
-
+            {showError && <p style={{ color: "red" }}>{showError}</p>}
             {isEdit ? (
               <B.PopBrowseBtnBrowse>
                 <B.BtnGroup>

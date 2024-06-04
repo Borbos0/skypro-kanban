@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
 import { postRegister } from "../../lib/api";
 import * as U from "./SignUp.Styled";

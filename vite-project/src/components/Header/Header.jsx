@@ -2,10 +2,8 @@ import { useState } from "react";
 import * as h from "./Header.styled";
 import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
-import { useUserContext } from "../../contexts/hooks/useUser";
 
 function Header() {
-  const { user } = useUserContext();
   const [isOpen, setIsOpen] = useState(false);
   const showProfile = () => {
     setIsOpen((prevState) => !prevState);
@@ -14,54 +12,42 @@ function Header() {
   return (
     <div>
       <h.Header>
-        <div className="container">
+        <h.Container>
           <h.HeaderBlock>
-            <div className="header__logo _show _light">
+            <h.HeaderLogo>
               <Link to={paths.MAIN}>
-                <img src="public/logo.png" alt="logo" />
+                <img src="/logo.png" alt="logo" />
               </Link>
-            </div>
-            <div className="header__logo _dark">
-              <Link to={paths.MAIN}>
-                <img src="public/logo_dark.png" alt="logo" />
-              </Link>
-            </div>
+            </h.HeaderLogo>
             <h.HeaderNav>
               {/* #popNewCard */}
               <h.HeaderButton id="btnMainNew">
                 <Link to={paths.NEWCARD}>Создать новую задачу</Link>
               </h.HeaderButton>
-              <a
-                href="#user-set-target"
-                className="header__user _hover02"
-                onClick={showProfile}
-              >
-                {user.name}
-              </a>
+              <h.HeaderUser href="#user-set-target" onClick={showProfile}>
+                {JSON.parse(localStorage.getItem("name"))}
+              </h.HeaderUser>
               {isOpen && (
-                <div
-                  className="header__pop-user-set pop-user-set"
-                  id="user-set-target"
-                >
+                <h.HeaderPopUserSet id="user-set-target">
                   {/* <!-- <a href="">x</a> --> */}
-                  <p className="pop-user-set__name">{user.name}</p>
-                  <p className="pop-user-set__mail">{user.login}</p>
-                  <div className="pop-user-set__theme">
+                  <h.PopUserSetName>
+                    {JSON.parse(localStorage.getItem("name"))}
+                  </h.PopUserSetName>
+                  <h.PopUserSetMail>
+                    {JSON.parse(localStorage.getItem("login"))}
+                  </h.PopUserSetMail>
+                  <h.PopUserSetTheme>
                     <p>Темная тема</p>
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      name="checkbox"
-                    />
-                  </div>
+                    <input type="checkbox" name="checkbox" />
+                  </h.PopUserSetTheme>
                   <button type="button" className="_hover03">
                     <Link to={paths.EXIT}>Выйти</Link>
                   </button>
-                </div>
+                </h.HeaderPopUserSet>
               )}
             </h.HeaderNav>
           </h.HeaderBlock>
-        </div>
+        </h.Container>
       </h.Header>
     </div>
   );

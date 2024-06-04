@@ -8,7 +8,7 @@ import { deleteTask } from "../../lib/api";
 
 function PopEditCard() {
   const { id } = useParams();
-  const { task, createNewTask } = useTaskContext();
+  const { createNewTask } = useTaskContext();
   const { user } = useUserContext();
 
   const deleteItem = async () => {

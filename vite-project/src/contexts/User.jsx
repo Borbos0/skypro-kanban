@@ -4,7 +4,7 @@ import { paths } from "../lib/const";
 
 function checkLS() {
   try {
-    return JSON.parse(localStorage.getItem("user"));
+    return JSON.parse(localStorage.getItem("token"));
   } catch (error) {
     console.log(error);
     return null;
@@ -18,13 +18,14 @@ export function UserProvider({ children }) {
   const navigate = useNavigate();
 
   function userLogin(userData) {
-    localStorage.setItem("user", JSON.stringify(userData.token));
+    localStorage.setItem("token", JSON.stringify(userData.token));
     localStorage.setItem("name", JSON.stringify(userData.name));
+    localStorage.setItem("login", JSON.stringify(userData.login));
     setUser(userData);
     navigate(paths.MAIN);
   }
   function logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
     navigate(paths.LOGIN);
   }

@@ -16,13 +16,12 @@ function PopNewCard() {
   const [showError, setShowError] = useState(null);
   const { user } = useUserContext();
   const { createNewTask } = useTaskContext();
-  const [selected, setSelected] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const taskData = { ...newTask, date: selected };
-    postTask({ ...taskData, token: user?.token })
+    const taskData = { ...newTask };
+    postTask({ ...taskData, token: user })
       .then((responseData) => {
         createNewTask(responseData.tasks);
         navigate(paths.MAIN);
@@ -70,7 +69,7 @@ function PopNewCard() {
                   ></C.FormNewArea>
                 </C.FormNewBlock>
               </C.PopNewCardForm>
-              <Calendar selected={selected} setSelected={setSelected} />
+              <Calendar />
             </C.PopNewCardWrap>
             <C.NewCardCategoris>
               <p>Категория</p>
@@ -114,13 +113,9 @@ function PopNewCard() {
               </C.CategoriesThemePurpleLabel>
             </C.NewCardCategoris>
             {showError && <p style={{ color: "red" }}>Заполните все поля!</p>}
-            <button
-              onClick={handleSubmit}
-              className="form-new__create _hover01"
-              id="btnCreate"
-            >
+            <C.FormNewCreate onClick={handleSubmit} id="btnCreate">
               Создать задачу
-            </button>
+            </C.FormNewCreate>
           </C.PopNewCardContent>
         </C.PopNewCardBlock>
       </C.PopNewCardContainer>
