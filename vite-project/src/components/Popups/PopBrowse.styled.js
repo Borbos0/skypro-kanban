@@ -258,17 +258,12 @@ export const CategoriesTheme = styled.label`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 2px 20px;
+  padding: 2px 16px;
   border-radius: 24px;
-  opacity: 0.4;
-  background-color: #eaeef6;
+  opacity: 0.3;
+  background-color: #94a6be;
   &:hover {
-    background-color: #94a6be;
-    color: #ffffff;
     opacity: 1;
-  }
-  &:checked {
-    background-color: #94a6be;
     color: #ffffff;
   }
 `;
@@ -486,11 +481,14 @@ export const PopBrowseStatusThemeInput = styled.input`
   display: none;
   &:checked + label {
     opacity: 1 !important;
+    background-color: #94a6be;
+    color: #ffffff;
   }
 `;
 export const Test = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 8px;
 `;
 export const FormNewCreate = styled.button`
   height: 30px;

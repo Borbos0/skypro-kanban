@@ -126,19 +126,20 @@ const PopBrowse = () => {
                 {isEdit ? (
                   statusList.map((status) => (
                     <B.StatusThemes key={status}>
-                      <B.CategoriesTheme>
+                      <B.PopBrowseStatusThemeInput
+                        type="radio"
+                        name="status"
+                        value={status}
+                        id={status}
+                        onChange={(e) =>
+                          setEditingTask({
+                            ...editingTask,
+                            status: e.target.value,
+                          })
+                        }
+                      ></B.PopBrowseStatusThemeInput>
+                      <B.CategoriesTheme for={status}>
                         {status}
-                        <B.PopBrowseStatusThemeInput
-                          type="radio"
-                          name="status"
-                          value={status}
-                          onChange={(e) =>
-                            setEditingTask({
-                              ...editingTask,
-                              status: e.target.value,
-                            })
-                          }
-                        ></B.PopBrowseStatusThemeInput>
                       </B.CategoriesTheme>
                     </B.StatusThemes>
                   ))
