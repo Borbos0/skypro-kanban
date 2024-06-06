@@ -267,6 +267,10 @@ export const CategoriesTheme = styled.label`
     color: #ffffff;
     opacity: 1;
   }
+  &:checked {
+    background-color: #94a6be;
+    color: #ffffff;
+  }
 `;
 export const FormBrowseBlock = styled.div`
   display: flex;

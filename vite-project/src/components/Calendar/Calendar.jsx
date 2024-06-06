@@ -1,27 +1,20 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import ru from "date-fns/locale/ru";
-import { useState } from "react";
+import { format } from "date-fns";
 
-export default function Calendar() {
-  const [date, setDate] = useState(new Date());
-  const currentDate = date.toLocaleDateString("ru-US");
-
+export default function Calendar({ selected, setSelected }) {
   let footer = <p>Выберите срок исполнения.</p>;
 
-  if (setDate) {
-    footer = (
-      <p>
-        Срок исполнения:{""} {currentDate}.
-      </p>
-    );
+  if (selected) {
+    footer = <p>Срок исполнения: {format(selected, "PP", { locale: ru })}.</p>;
   }
   return (
     <DayPicker
       locale={ru}
       mode="single"
-      selected={date}
-      onSelect={setDate}
+      selected={selected}
+      onSelect={setSelected}
       footer={footer}
     />
   );

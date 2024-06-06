@@ -14,14 +14,15 @@ function PopNewCard() {
     topic: "",
   });
   const [showError, setShowError] = useState(null);
+  const [selected, setSelected] = useState("");
   const { user } = useUserContext();
   const { createNewTask } = useTaskContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const taskData = { ...newTask };
-    postTask({ ...taskData, token: user })
+    const taskData = { ...newTask, date: selected, token: user.token };
+    postTask(taskData)
       .then((responseData) => {
         createNewTask(responseData.tasks);
         navigate(paths.MAIN);
@@ -33,6 +34,7 @@ function PopNewCard() {
         }
       });
   };
+
   return (
     <C.PopNewCard id="popNewCard">
       <C.PopNewCardContainer>
@@ -69,7 +71,7 @@ function PopNewCard() {
                   ></C.FormNewArea>
                 </C.FormNewBlock>
               </C.PopNewCardForm>
-              <Calendar />
+              <Calendar selected={selected} setSelected={setSelected} />
             </C.PopNewCardWrap>
             <C.NewCardCategoris>
               <p>Категория</p>

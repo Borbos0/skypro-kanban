@@ -29,6 +29,9 @@ export async function postRegister(name, login, password) {
   return data;
 }
 export async function postTask({ title, topic, description, date, token }) {
+  if (token === undefined) {
+    token = JSON.parse(localStorage.getItem("token"));
+  }
   const response = await fetch(baseUrl, {
     method: "POST",
     headers: {
@@ -87,9 +90,6 @@ export async function editTask({
   _id,
   token,
 }) {
-  if (token === undefined) {
-    token = JSON.parse(localStorage.getItem("token"));
-  }
   const response = await fetch(baseUrl + "/" + _id, {
     method: "PUT",
     headers: {

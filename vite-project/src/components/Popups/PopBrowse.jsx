@@ -31,14 +31,6 @@ const PopBrowse = () => {
     }
   }, [task]);
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   createNewTask({
-  //     ...task,
-  //     [name]: value,
-  //   });
-  // };
-
   const deleteItem = async () => {
     await deleteTask({ id, token: user.token })
       .then((responseData) => {
@@ -60,7 +52,7 @@ const PopBrowse = () => {
       ...editingTask,
       date: selected,
       id,
-      token: user,
+      token: JSON.parse(localStorage.getItem("token")),
     };
     await editTask(editingTaskData)
       .then((response) => {
@@ -178,7 +170,7 @@ const PopBrowse = () => {
                     ></B.FormBrowseArea>
                   </div>
                 </B.PopBrowseForm>
-                <Calendar />
+                <Calendar selected={selected} setSelected={setSelected} />
               </B.PopBrowseWrap>
             ) : (
               <B.PopBrowseWrap>
@@ -194,7 +186,7 @@ const PopBrowse = () => {
                     ></B.FormBrowseArea>
                   </div>
                 </B.PopBrowseForm>
-                <Calendar />
+                <Calendar selected={selected} />
               </B.PopBrowseWrap>
             )}
             {showError && <p style={{ color: "red" }}>{showError}</p>}
