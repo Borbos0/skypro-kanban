@@ -54,14 +54,23 @@ const PopBrowse = () => {
       id,
       token: JSON.parse(localStorage.getItem("token")),
     };
-    await editTask(editingTaskData)
-      .then((response) => {
-        createNewTask(response.tasks);
-        navigate(paths.MAIN);
-      })
-      .catch((error) => {
-        setShowError(error.message);
-      });
+    if (
+      !editingTaskData.description ||
+      !editingTaskData.topic ||
+      !editingTaskData.title
+    ) {
+      setShowError("Неккоректные данные");
+    } else {
+      await editTask(editingTaskData)
+        .then((response) => {
+          createNewTask(response.tasks);
+          setShowError("");
+          navigate(paths.MAIN);
+        })
+        .catch((error) => {
+          setShowError(error.message);
+        });
+    }
   };
 
   const currentTask = task.find((element) => params.id === element._id);

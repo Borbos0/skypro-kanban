@@ -12,7 +12,7 @@ export default function Card({ tag, description, date, id }) {
     const result = tagMassive.filter((word) => word.name === tag);
     return result.map((word) => word.color);
   };
-  const formatDate = format(new Date(date), "MM.dd.yy");
+  const formatDate = format(new Date(date), "dd.MM.yy");
   return (
     <C.Cards>
       <C.CardsItem>
