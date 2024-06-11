@@ -22,11 +22,13 @@ function PopNewCard() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const taskData = { ...newTask, date: selected, token: user.token };
-    if (!newTask.topic || !newTask.description || !newTask.title) {
+    if (
+      !newTask.topic ||
+      !newTask.description ||
+      !newTask.title ||
+      !newTask.date
+    ) {
       setShowError("Неккоректные данные");
-      console.log(`newTask.topic ${newTask.topic}`);
-      console.log(`newTask.description ${newTask.description}`);
-      console.log(`newTask.title ${newTask.title}`);
     } else {
       postTask(taskData)
         .then((responseData) => {
