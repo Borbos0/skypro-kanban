@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { paths } from "../../lib/const";
 import { postRegister } from "../../lib/api";
 import * as U from "./SignUp.Styled";
@@ -10,15 +10,20 @@ function SignUp() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [showError, setShowError] = useState(null);
 
   const onClickRegister = async (e) => {
     e.preventDefault();
-    try {
-      await postRegister(name, login, password).then((responseData) => {
-        userLogin(responseData.user);
-      });
-    } catch (error) {
-      console.log(error);
+    if (!name || !login || !password) {
+      setShowError("Неккоректные данные");
+    } else {
+      try {
+        await postRegister(name, login, password).then((responseData) => {
+          userLogin(responseData.user);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -65,6 +70,7 @@ function SignUp() {
               >
                 Зарегистрироваться{" "}
               </U.ModalBtntnSignupEnt>
+              {showError && <p style={{ color: "red" }}>{showError}</p>}
               <div className="modal__form-group">
                 <p>
                   Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link>

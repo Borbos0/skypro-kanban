@@ -1,14 +1,15 @@
 import Column from "../Columns/MainColumn.jsx";
 import { statusList } from "../../../Data.js";
 import * as m from "./Main.styled";
+import { Container } from "../Header/Header.styled";
 import Header from "../Header/Header.jsx";
 
 export default function Main({ isLoading, error }) {
   return (
-    <div className="wrapper">
+    <m.Wrapper>
       <Header />
       <m.Main>
-        <div className="container">
+        <Container>
           <m.MainBlock>
             <m.MainContent>
               {error ? (
@@ -28,8 +29,8 @@ export default function Main({ isLoading, error }) {
               )}
             </m.MainContent>
           </m.MainBlock>
-        </div>
+        </Container>
       </m.Main>
-    </div>
+    </m.Wrapper>
   );
 }

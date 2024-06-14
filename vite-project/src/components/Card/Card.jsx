@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import * as C from "./Card.styled";
+import { format } from "date-fns";
 
 export default function Card({ tag, description, date, id }) {
   const getClassTag = (tag) => {
@@ -11,6 +12,7 @@ export default function Card({ tag, description, date, id }) {
     const result = tagMassive.filter((word) => word.name === tag);
     return result.map((word) => word.color);
   };
+  const formatDate = format(new Date(date), "dd.MM.yy");
   return (
     <C.Cards>
       <C.CardsItem>
@@ -60,7 +62,7 @@ export default function Card({ tag, description, date, id }) {
                   </clipPath>
                 </defs>
               </svg>
-              <p>{date}</p>
+              <p>{formatDate}</p>
             </C.CardDate>
           </C.CardContent>
         </C.CardsCard>

@@ -14,26 +14,35 @@ function PopNewCard() {
     topic: "",
   });
   const [showError, setShowError] = useState(null);
+  const [selected, setSelected] = useState("");
   const { user } = useUserContext();
   const { createNewTask } = useTaskContext();
-  const [selected, setSelected] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const taskData = { ...newTask, date: selected };
-    postTask({ ...taskData, token: user?.token })
-      .then((responseData) => {
-        createNewTask(responseData.tasks);
-        navigate(paths.MAIN);
-      })
-      .catch((error) => {
-        if (!newTask.date || !newTask.description || !newTask.title) {
+    const taskData = { ...newTask, date: selected, token: user.token };
+    if (
+      !newTask.topic ||
+      !newTask.description ||
+      !newTask.title ||
+      !newTask.date
+    ) {
+      setShowError("Неккоректные данные");
+    } else {
+      postTask(taskData)
+        .then((responseData) => {
+          createNewTask(responseData.tasks);
+          navigate(paths.MAIN);
+          setShowError("");
+        })
+        .catch((error) => {
           setShowError(error.message);
           navigate(paths.NEWCARD);
-        }
-      });
+        });
+    }
   };
+
   return (
     <C.PopNewCard id="popNewCard">
       <C.PopNewCardContainer>
@@ -112,59 +121,11 @@ function PopNewCard() {
               <C.CategoriesThemePurpleLabel htmlFor="radio3">
                 Copywriting
               </C.CategoriesThemePurpleLabel>
-              {/* <C.NewCardCategorisThemes $topic="Web Design">
-                Web Design
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Web Design"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes>
-              <C.NewCardCategorisThemes $topic="Research">
-                Research
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Research"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes>
-              <C.NewCardCategorisThemes $topic="Copywriting">
-                Copywriting
-                <input
-                  type="radio"
-                  name="topic"
-                  value="Copywriting"
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, topic: e.target.value })
-                  }
-                />
-              </C.NewCardCategorisThemes> */}
-              {/* <div className="categories__themes">
-                <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
-                </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
-                </div>
-              </div> */}
             </C.NewCardCategoris>
-            {showError && <p style={{ color: "red" }}>Зполните все поля!</p>}
-            <button
-              onClick={handleSubmit}
-              className="form-new__create _hover01"
-              id="btnCreate"
-            >
+            {showError && <p style={{ color: "red" }}>Заполните все поля!</p>}
+            <C.FormNewCreate onClick={handleSubmit} id="btnCreate">
               Создать задачу
-            </button>
+            </C.FormNewCreate>
           </C.PopNewCardContent>
         </C.PopNewCardBlock>
       </C.PopNewCardContainer>

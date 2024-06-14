@@ -9,15 +9,20 @@ function SignIn() {
   const { userLogin } = useUserContext();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [showError, setShowError] = useState(null);
 
   const onClickLogin = async (e) => {
     e.preventDefault();
-    try {
-      await postLogin(login, password).then((responseData) => {
-        userLogin(responseData.user);
-      });
-    } catch (error) {
-      console.log(error);
+    if (!login || !password) {
+      setShowError("Неккоректные данные");
+    } else {
+      try {
+        await postLogin(login, password).then((responseData) => {
+          userLogin(responseData.user);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -53,6 +58,7 @@ function SignIn() {
               >
                 Войти
               </I.ModalBtnEnter>
+              {showError && <p style={{ color: "red" }}>{showError}</p>}
               <div className="modal__form-group">
                 <p>Нужно зарегистрироваться?</p>
                 <Link to={paths.REGISTER}>Регистрируйтесь здесь</Link>

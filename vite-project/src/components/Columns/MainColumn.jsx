@@ -10,15 +10,15 @@ export default function Column({ status }) {
   const { user } = useUserContext();
   const cards = task.filter((theme) => theme.status === status);
 
-  useEffect(() => {
-    getTasks({ token: user.token })
-      .then((data) => {
-        setTask(data.tasks);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [user, setTask]);
+  // useEffect(() => {
+  //   getTasks({ token: user.token })
+  //     .then((data) => {
+  //       setTask(data.tasks);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }, [user, setTask]);
   return (
     <m.MainColumn>
       <m.ColumnTitle>
